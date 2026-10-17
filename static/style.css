@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f6f3ee;
+  color: #222;
+}
+
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+.day {
+  background: #fff;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1.25rem;
+}
+
+.day ul {
+  list-style: none;
+  padding: 0;
+}
+
+.day li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+}
+
+.price {
+  color: #666;
+}

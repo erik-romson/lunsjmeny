@@ -1,0 +1,13 @@
+[project]
+name = "lunsjmeny"
+version = "0.1.0"
+description = "Ukas lunsjmeny i kantina"
+requires-python = ">=3.12"
+dependencies = ["flask>=3.0"]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

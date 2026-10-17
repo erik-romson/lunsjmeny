@@ -1,0 +1,25 @@
+{
+  "week": 43,
+  "days": {
+    "mandag": [
+      {"name": "Fiskesuppe med brød", "price": 95, "allergens": ["fisk", "melk", "gluten"]},
+      {"name": "Linsegryte med ris", "price": 85, "allergens": ["selleri"]}
+    ],
+    "tirsdag": [
+      {"name": "Kyllingtaco", "price": 99, "allergens": ["gluten", "melk"]},
+      {"name": "Bønnetaco", "price": 89, "allergens": ["gluten"]}
+    ],
+    "onsdag": [
+      {"name": "Kjøttkaker med brun saus", "price": 105, "allergens": ["gluten", "melk", "egg"]},
+      {"name": "Ovnsbakt laks med poteter", "price": 115, "allergens": ["fisk"]}
+    ],
+    "torsdag": [
+      {"name": "Ertesuppe med flesk", "price": 89, "allergens": ["selleri"]},
+      {"name": "Pasta med pesto", "price": 92, "allergens": ["gluten", "nøtter", "melk"]}
+    ],
+    "fredag": [
+      {"name": "Pizza margherita", "price": 98, "allergens": ["gluten", "melk"]},
+      {"name": "Pokebowl med tofu", "price": 109, "allergens": ["soya", "sesam"]}
+    ]
+  }
+}
