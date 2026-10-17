@@ -33,6 +33,21 @@ h1 {
   padding: 0.25rem 0;
 }
 
+.day.today {
+  background: #fff7ed;
+  border: 2px solid #9a3412;
+}
+
+.today-label {
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 0.25rem;
+  background: #9a3412;
+  color: #fff;
+  font-size: 0.875rem;
+  vertical-align: middle;
+}
+
 .price {
   color: #666;
 }
