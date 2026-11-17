@@ -5,6 +5,8 @@ from pathlib import Path
 
 MENU_FILE = Path(__file__).parent / "menu.json"
 
+WEEKDAYS = ("mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag", "søndag")
+
 
 def load_menu(path: Path = MENU_FILE) -> dict:
     """Return the menu as stored in the JSON file."""
@@ -13,8 +15,13 @@ def load_menu(path: Path = MENU_FILE) -> dict:
 
 
 def days_in_order(menu: dict) -> list[str]:
-    """Return the days that have a menu, in a stable order."""
-    return sorted(menu["days"])
+    """Return the days that have a menu: weekdays in week order, then other names alphabetically."""
+
+    def position(day: str) -> tuple[int, str]:
+        rank = WEEKDAYS.index(day) if day in WEEKDAYS else len(WEEKDAYS)
+        return (rank, day)
+
+    return sorted(menu["days"], key=position)
 
 
 def week_view(menu: dict) -> list[dict]:
