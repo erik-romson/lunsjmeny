@@ -9,14 +9,47 @@
 <body>
   <main>
     <h1>Lunsjmeny uke {{ week }}</h1>
+    <form class="filter" method="get" action="{{ url_for('index') }}">
+      <fieldset>
+        <legend>Skjul retter som inneholder</legend>
+        {% for allergen in choices %}
+        <label><input type="checkbox" name="uten" value="{{ allergen }}"{% if allergen in excluded %} checked{% endif %}> {{ allergen }}</label>
+        {% endfor %}
+      </fieldset>
+      <button type="submit">Bruk valget</button>
+      {% if excluded %}
+      <a href="{{ url_for('index') }}">Vis alle retter</a>
+      {% endif %}
+    </form>
+    {% if unmatched %}
+    <p class="notice">Ingen retter denne uken er merket med: {{ unmatched | join(", ") }}.</p>
+    {% endif %}
     {% for entry in days %}
     <section class="day">
       <h2>{{ entry.day | capitalize }}</h2>
+      {% if entry.all_hidden %}
+      <p class="all-hidden">Alle retter denne dagen inneholder allergener du har valgt bort.</p>
+      {% else %}
       <ul>
         {% for dish in entry.dishes %}
-        <li><span class="name">{{ dish.name }}</span> <span class="price">{{ dish.price }} kr</span></li>
+        <li>
+          <div class="dish">
+            <span class="name">{{ dish.name }}</span>
+            <span class="allergens">
+              {%- if dish.allergens is none -%}
+                Allergener ikke oppgitt
+              {%- elif dish.allergens -%}
+                Allergener: {{ dish.allergens | join(", ") }}
+              {%- else -%}
+                Ingen allergener registrert
+              {%- endif -%}
+            </span>
+          </div>
+          <span class="price">{{ dish.price }} kr</span>
+        </li>
         {% endfor %}
       </ul>
+      {% endif %}
     </section>
     {% endfor %}
   </main>
