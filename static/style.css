@@ -29,10 +29,40 @@ h1 {
 
 .day li {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding: 0.25rem 0;
 }
 
 .price {
   color: #666;
+}
+
+.allergens {
+  flex-basis: 100%;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.filter {
+  background: #fff;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1.25rem;
+}
+
+.filter fieldset {
+  border: 0;
+  margin: 0 0 0.5rem;
+  padding: 0;
+}
+
+.filter label {
+  margin-right: 0.75rem;
+  white-space: nowrap;
+}
+
+.empty {
+  color: #666;
+  font-style: italic;
 }
