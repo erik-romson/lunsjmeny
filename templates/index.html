@@ -10,8 +10,8 @@
   <main>
     <h1>Lunsjmeny uke {{ week }}</h1>
     {% for entry in days %}
-    <section class="day">
-      <h2>{{ entry.day | capitalize }}</h2>
+    <section class="day{% if entry.is_today %} today{% endif %}"{% if entry.is_today %} aria-current="date"{% endif %}>
+      <h2>{{ entry.day | capitalize }}{% if entry.is_today %} <span class="today-label">I dag</span>{% endif %}</h2>
       <ul>
         {% for dish in entry.dishes %}
         <li><span class="name">{{ dish.name }}</span> <span class="price">{{ dish.price }} kr</span></li>
