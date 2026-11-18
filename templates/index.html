@@ -9,14 +9,26 @@
 <body>
   <main>
     <h1>Lunsjmeny uke {{ week }}</h1>
+    <form class="filter" method="get" action="{{ url_for('index') }}">
+      <fieldset>
+        <legend>Skjul retter som inneholder</legend>
+        {% for allergen in allergens %}
+        <label><input type="checkbox" name="uten" value="{{ allergen }}"{% if allergen in selected %} checked{% endif %}> {{ allergen }}</label>
+        {% endfor %}
+      </fieldset>
+      <button type="submit">Bruk valget</button>
+    </form>
     {% for entry in days %}
     <section class="day">
       <h2>{{ entry.day | capitalize }}</h2>
+      {% if entry.dishes %}
       <ul>
         {% for dish in entry.dishes %}
-        <li><span class="name">{{ dish.name }}</span> <span class="price">{{ dish.price }} kr</span></li>
+        <li><span class="name">{{ dish.name }}</span> <span class="price">{{ dish.price }} kr</span>
+          <span class="allergens">Allergener: {{ dish.allergens | join(", ") if dish.allergens else "ingen" }}</span></li>
         {% endfor %}
       </ul>
+      {% else %}<p class="empty">Alle rettene denne dagen inneholder valgte allergener.</p>{% endif %}
     </section>
     {% endfor %}
   </main>
